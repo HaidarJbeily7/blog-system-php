@@ -1,75 +1,115 @@
-<?php include('config.php'); ?>
+<?php include("./app/controllers/users.php"); ?>
 
-<?php include('includes/public/registration_login.php'); ?>
 
-<?php include('includes/all_functions.php'); ?>
 
-<?php include('includes/public/head_section.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<?php 
-	
-	$posts = getPublishedPosts();
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-?>
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href= "assets/css/font-awesome.min.css"  />
 
-<title>LifeBlog | Home </title>
+<!-- Custom CSS -->
+<link rel="stylesheet" href=  "assets/css/style.css" />
 
+
+  <title>Haidar Inspires Blog</title>
 </head>
+
 <body>
 
-<div class="container">
 
-<!-- Navbar -->
-	<?php include( ROOT_PATH . '/includes/public/navbar.php'); ?>
-<!-- // Navbar -->
-
-<!-- Banner -->
-	<?php include( ROOT_PATH . '/includes/public/banner.php'); ?>
-<!-- // Banner -->
-
-<!-- Messages -->
-	<?php include( ROOT_PATH . '/includes/public/messages.php'); ?>
-<!-- // Messages -->
-
-<!-- content -->
-<div class="content">
-	<h2 class="content-title">Recent Articles</h2>
-	<hr>
-
-	<?php foreach ($posts as $post): ?>
-		<div class="post" style="margin-left: 0px;">
-			<img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt="">
-
-			<?php if (isset($post['topic']['name'])): ?>
-				<a 
-					href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $post['topic']['id'] ?>"
-					class="btn category">
-					<?php echo $post['topic']['name'] ?>
-				</a>
-			<?php endif ?>
-
-			<a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
-				<div class="post_info">
-					<h3><?php echo $post['title'] ?></h3>
-					<div class="info">
-						<span><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
-						<span class="read_more">Read more...</span>
-					</div>
-				</div>
-			</a>
-		</div>
-	<?php endforeach ?>
+    <?php include("./app/include/header.php") ?>
+    <?php if (isset($_SESSION['message'])) : ?>
+      <div class="msg <?php echo $_SESSION['type'];  ?>" >
+      	<p>
+          <?php 
+          	echo $_SESSION['message']; 
+          	unset($_SESSION['message']);
+          ?>
+      	</p>
+      </div>
+    <?php endif ?>    
 
 
+ 
+    <!-- content -->
+    <div class="content clearfix">
+      <div class="page-content">
+        <h1 class="recent-posts-title">Recent Posts</h1>
+        <div class="post clearfix">
+          <img src="./assets/images/image_1.png" class="post-image" alt="">
+          <div class="post-content">
 
-</div>
-<!-- // content -->
+            <h2 class="post-title"><a href="#">The strongest and sweetest songs yet remain to be sung</a></h2>
+
+            <div class="post-info">
+              <i class="fa fa-user-o"></i> Haidar Jbeily
+              &nbsp;
+              <i class="fa fa-calendar"></i> Mar 18, 2021
+            </div>
+            <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
+              qui sunt! Ipsum nihil unde obcaecati.
+            </p>
+            <button type="submit" class = 'btn-sm'>Like</button>
+            <button type="submit"class = 'btn-sm'>Dislike</button>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="post clearfix">
+          <img src="./assets/images/image_2.png" class="post-image" alt="">
+          <div class="post-content">
+            <h2 class="post-title"><a href="#">That love is all there is, is all we know of love</h2></a>
+            <div class="post-info">
+              <i class="fa fa-user-o"></i> Hiudar Jbeily
+              &nbsp;
+              <i class="fa fa-calendar"></i> Feb 18, 2020
+            </div>
+            <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
+              qui sunt! Ipsum nihil unde obcaecati.
+            </p>
+            <button type="submit" class = 'LikeEtDis'>Like</button>
+            <button type="submit" class = 'LikeEtDis'>Dislike</button>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="post clearfix">
+          <img src="./assets/images/image_3.png" class="post-image" alt="">
+          <div class="post-content">
+            <h2 class="post-title"><a href="#">Do anything, but let it produce joy</a></h2>
+            <div class="post-info">
+              <i class="fa fa-user-o"></i> Haidar Jbeily
+              &nbsp;
+              <i class="fa fa-calendar"></i> Jan 18, 2019
+            </div>
+            <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
+              qui sunt! Ipsum nihil unde obcaecati.
+            </p>
+            <button type="submit" class = 'LikeEtDis'>Like</button>
+            <button type="submit" class = 'LikeEtDis'>Dislike</button>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    <!-- // content -->
+
+  
+  
+
+ 
+  <?php include("./app/include/footer.php"); ?>
 
 
-</div>
-<!-- // container -->
+  <!-- JQuery -->
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/scripts.js"></script>
 
+</body>
 
-<!-- Footer -->
-	<?php include( ROOT_PATH . '/includes/public/footer.php'); ?>
-<!-- // Footer -->
+</html>

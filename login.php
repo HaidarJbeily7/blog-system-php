@@ -1,51 +1,70 @@
-<?php  include('config.php'); ?>
+<?php include('./app/database/db.php'); ?>
 
-<?php  include('includes/public/registration_login.php'); ?>
+<?php include("./app/controllers/users.php"); ?>
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<?php  include('includes/public/head_section.php'); ?>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href= "./assets/css/font-awesome.min.css"  />
 
-	<title>LifeBlog | Sign in </title>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href=  "./assets/css/style.css" />
+
+  <title>Login</title>
 </head>
+
 <body>
 
-<div class="container">
 
-<!-- Navbar -->
-	<?php include( ROOT_PATH . '/includes/public/navbar.php'); ?>
-<!-- // Navbar -->
+    <?php include("./app/include/header.php") ?>
 
-
-<div style="width: 40%; margin: 20px auto;">
-	<form method="post" action="login.php" >
-		<h2>Login</h2>
-		<?php include(ROOT_PATH . '/includes/public/errors.php') ?>
-		<input 
-			type="text" 
-			name="username"
-			value="<?php echo $username; ?>" 
-			value="" placeholder="Username">
-
-		<input 
-			type="password" 
-			name="password" 
-			placeholder="Password">
-
-		<button type="submit" class="btn" name="login_btn">Login</button>
-		<p>
-			Not yet a member? <a href="register.php">Sign up</a>
-		</p>
-	</form>
-</div>
+    
+  
+ 
+     
 
 
-	</div>
-<!-- // content -->
+  <div class="auth-content">
+    <form action="login.php" method="post">
+      <h3 class="form-title">Login</h3>
+      
+      <?php if(count($errors) > 0): ?>
+        <div class="msg error">
+          <?php foreach($errors as $error): ?>
+            <li><?php echo $error; ?></li>
+          <?php endforeach; ?>
+        </div> 
+      <?php endif; ?>
 
-</div>
-<!-- // container -->
+      <div>
+        <label>Username</label>
+        <input type="text" name="username" class="text-input">
+      </div>
+      <div>
+        <label>Password</label>
+        <input  type="password" name="password" class="text-input">
+      </div>
+      <div>
+        <button  type="submit" name="login-btn" class="btn">Login</button>
+      </div>
+      <p class="auth-nav">Or <a href="register.php">Sign Up</a></p>
+    </form>
+  </div>
 
-<!-- Footer -->
-	<?php include( ROOT_PATH . '/includes/public/footer.php'); ?>
-<!-- // Footer -->
+
+
+  <!-- JQuery -->
+  <script src="./assets/js/jquery.min.js"></script>
+
+  <script src="./assets/js/scripts.js"></script>
+
+
+</body>
+
+</html>
