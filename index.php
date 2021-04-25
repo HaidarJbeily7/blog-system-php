@@ -23,9 +23,10 @@
 <body>
 
 
+
     <?php include("./app/include/header.php") ?>
     <?php if (isset($_SESSION['message'])) : ?>
-      <div class="msg <?php echo $_SESSION['type'];  ?>" >
+      <div class="msg <?php echo $_SESSION['type'];  ?> "> 
       	<p>
           <?php 
           	echo $_SESSION['message']; 
@@ -33,10 +34,15 @@
           ?>
       	</p>
       </div>
-    <?php endif ?>    
+    <?php endif; ?>    
 
-
- 
+    <div class="content "  style="margin-bottom: 10px;">
+    <a href="http://localhost/BLOG/create_post.php">
+    <button class = 'btn' > 
+   Create Post
+    </button>
+    </a>
+    </div>
     <!-- content -->
     <div class="content clearfix">
       <div class="page-content">
@@ -55,9 +61,8 @@
             <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
               qui sunt! Ipsum nihil unde obcaecati.
             </p>
-            <button type="submit" class = 'btn-sm'>Like</button>
-            <button type="submit"class = 'btn-sm'>Dislike</button>
-            <a href="#" class="read-more">Read More</a>
+            
+            <a href="http://localhost/BLOG/single.php" class="read-more">Read More</a>
           </div>
         </div>
         <div class="post clearfix">
@@ -72,9 +77,8 @@
             <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
               qui sunt! Ipsum nihil unde obcaecati.
             </p>
-            <button type="submit" class = 'LikeEtDis'>Like</button>
-            <button type="submit" class = 'LikeEtDis'>Dislike</button>
-            <a href="#" class="read-more">Read More</a>
+           
+            <a href="http://localhost/BLOG/single.php" class="read-more">Read More</a>
           </div>
         </div>
         <div class="post clearfix">
@@ -89,9 +93,8 @@
             <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
               qui sunt! Ipsum nihil unde obcaecati.
             </p>
-            <button type="submit" class = 'LikeEtDis'>Like</button>
-            <button type="submit" class = 'LikeEtDis'>Dislike</button>
-            <a href="#" class="read-more">Read More</a>
+  
+            <a href="http://localhost/BLOG/single.php" class="read-more">Read More</a>
           </div>
         </div>
       </div>
