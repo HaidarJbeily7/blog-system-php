@@ -1,5 +1,8 @@
 <?php include("./app/controllers/users.php"); ?>
 
+<?php include("./app/database/db.php"); ?>
+
+
 
 
 <!DOCTYPE html>
@@ -35,36 +38,45 @@
       	</p>
       </div>
     <?php endif; ?>    
-
+      <?php if(isset($_SESSION['id'])):?>
     <div class="content "  style="margin-bottom: 10px;">
-    <a href="http://localhost/BLOG/create_post.php">
+    <a href="create_post.php">
     <button class = 'btn' > 
    Create Post
     </button>
     </a>
     </div>
+    <?php endif; ?>
+
+
     <!-- content -->
     <div class="content clearfix">
       <div class="page-content">
         <h1 class="recent-posts-title">Recent Posts</h1>
+
+        <?php foreach($posts as $post):?>
         <div class="post clearfix">
-          <img src="./assets/images/image_1.png" class="post-image" alt="">
+          <img src=' <?php echo "./assets/images/".$post['image']; ?>' class="post-image" alt="">
           <div class="post-content">
 
-            <h2 class="post-title"><a href="#">The strongest and sweetest songs yet remain to be sung</a></h2>
+            <h2 class="post-title"><a href="#"><?php echo  $post['title']; ?></a></h2>
 
             <div class="post-info">
-              <i class="fa fa-user-o"></i> Haidar Jbeily
+              <i class="fa fa-user-o"></i> <?php
+               echo getUserById($post['user_id'])['username'];
+
+              ?>
               &nbsp;
               <i class="fa fa-calendar"></i> Mar 18, 2021
             </div>
-            <p class="post-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus expedita tempora
-              qui sunt! Ipsum nihil unde obcaecati.
+            <p class="post-body"> <?php echo $post['body']; ?>
             </p>
             
             <a href="http://localhost/BLOG/single.php" class="read-more">Read More</a>
           </div>
         </div>
+        <?php endforeach;?>
+<!--         
         <div class="post clearfix">
           <img src="./assets/images/image_2.png" class="post-image" alt="">
           <div class="post-content">
@@ -96,7 +108,7 @@
   
             <a href="http://localhost/BLOG/single.php" class="read-more">Read More</a>
           </div>
-        </div>
+        </div>-->
       </div>
      
     </div>

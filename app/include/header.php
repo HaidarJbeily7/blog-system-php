@@ -24,7 +24,6 @@
             <i class="fa fa-chevron-down"></i>
           </a>
           <ul class="dropdown">
-            <li><a href="#">Dashboard</a></li>
             <li><a href="http://localhost/BLOG/logout.php" class="logout">logout</a></li>
           </ul>
         </li>

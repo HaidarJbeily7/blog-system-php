@@ -6,9 +6,8 @@ include('connect.php');
 {
     global $conn;
     $stmt = "select * FROM  $table";
-    $query= $conn->prepare($stmt); 
-    $query->execute();
-    $array = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+    $result = mysqli_query($conn, $stmt);
+    $array = mysqli_fetch_assoc($result);
     return $array;
 }
 function SelectOne($table, $conditions)
@@ -17,6 +16,7 @@ function SelectOne($table, $conditions)
     $stmt = "select * FROM  $table";
     // for ($conditions as $keys => )
 }
+
 
 
 function excuteQuery($sql, $data)
@@ -33,7 +33,7 @@ function excuteQuery($sql, $data)
 function getUserById($id)
 	{
 		global $conn;
-		$sql = "SELECT * FROM users WHERE id=$id LIMIT 1";
+		$sql = "SELECT * FROM users WHERE 'id'=$id LIMIT 1";
 
 		$result = mysqli_query($conn, $sql);
 		$user = mysqli_fetch_assoc($result);

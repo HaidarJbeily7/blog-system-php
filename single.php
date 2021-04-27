@@ -1,3 +1,5 @@
+<?php include('./app/controllers/users.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +27,7 @@
     <!-- // content -->
     
     <div class="content "  style="margin-bottom: 10px; width:80%">
-    <a href="http://localhost/BLOG/create_post.php">
+    <a href="create_post.php">
     <button class = 'btn' > 
    Edit Post
     </button>
