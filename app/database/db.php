@@ -18,7 +18,6 @@ function SelectOne($table, $conditions)
 }
 
 
-
 function excuteQuery($sql, $data)
 {
     global $conn;
@@ -30,20 +29,21 @@ function excuteQuery($sql, $data)
     return $query;
 
 }
-function getUserById($id)
+function getUsernameById($id)
 	{
 		global $conn;
-		$sql = "SELECT * FROM users WHERE 'id'=$id LIMIT 1";
+		$sql = "SELECT username FROM users WHERE 'id'='$id' LIMIT 1";
 
 		$result = mysqli_query($conn, $sql);
 		$user = mysqli_fetch_assoc($result);
+       
 
-		// returns user in an array format: 
-		// ['id'=>1 'username' => 'Awa', 'email'=>'a@a.com', 'password'=> 'mypass']
 		return $user; 
 	}
 
 
+  ;
+    
      // escape value from form
      function esc(String $value)
      {	
@@ -55,3 +55,16 @@ function getUserById($id)
 
          return $val;
      }
+
+     function getPosts() {
+		global $conn;
+
+		$sql = "SELECT * FROM posts";
+		$result = mysqli_query($conn, $sql);
+
+		// fetch all posts as an associative array called $posts
+		$posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+		return $posts;
+        
+    }

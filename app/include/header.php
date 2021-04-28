@@ -1,6 +1,6 @@
 <?php include("./app/database/connect.php") ?>
   <!-- header -->
-  
+   
   <header class="clearfix">
     <div class="logo">
       <a href="index.php">
@@ -20,11 +20,11 @@
             <i class="fa fa-user">
            
             </i>
-            <?php echo $_SESSION['user']['username']; ?>
+            <?php  echo ($_SESSION['user'])==NULL?'Guest':$_SESSION['user']; ?>
             <i class="fa fa-chevron-down"></i>
           </a>
           <ul class="dropdown">
-            <li><a href="http://localhost/BLOG/logout.php" class="logout">logout</a></li>
+            <li><a href="logout.php" class="logout">logout</a></li>
           </ul>
         </li>
         <?php else: ?>

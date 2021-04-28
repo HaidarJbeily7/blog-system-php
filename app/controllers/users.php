@@ -54,7 +54,7 @@
                 $reg_user_id =mysqli_insert_id($conn); // get id of created user
 
                 $_SESSION['id'] = $reg_user_id ;
-                $_SESSION['user'] = getUserById($reg_user_id); // put logged in user into session array
+                $_SESSION['user'] =$username; 
 
                 $_SESSION['message'] = "You are now logged in"; 
                 $_SESSION['type'] ='success';
@@ -80,7 +80,7 @@
                 array_push($errors, "Password required"); 
             }
 
-            var_dump( $errors );
+           
 
 
             if (empty($errors)) {
@@ -95,7 +95,8 @@
                     $reg_user_id = mysqli_fetch_assoc($result)['id']; 
 
                     // put logged in user into session array
-                    $_SESSION['user'] = getUserById($reg_user_id); 
+                    $_SESSION['user'] =$username; 
+                    
                     $_SESSION['message'] = "You are now logged in"; 
                     $_SESSION['type'] ='success';
                     $_SESSION['id'] = $reg_user_id ;

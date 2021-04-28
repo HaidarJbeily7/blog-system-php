@@ -1,7 +1,9 @@
 <?php
 
     include('path.php');
-    $posts = SelectAll('posts');
+
+    
+    
     $title ='';
     $body = '';
     $image_name = '';
@@ -12,13 +14,13 @@
        
         unset($_POST['save-post']);
         $title =$_POST['title'];
-        $body = $_POST['body'];
+        $body = htmlentities($_POST['body']) ;
 
         if (!empty($image))
             {
                 $image_name = time() . $image['name'];
                 $dest = ROOT ."\assets\images\\".$image_name;
-                $res =  move_uploaded_file($image[ "tmp_name" ], $dest);
+                $res =  move_uploaded_file($image["tmp_name"], $dest);
                 if(!$res)
                 array_push($errors,'Failed to upload the image');
             }
@@ -26,8 +28,6 @@
             {
                 array_push($errors, 'Post image required');
             }
-
-
         if(empty( $title))
             {
                 array_push($errors,"Title is required");
