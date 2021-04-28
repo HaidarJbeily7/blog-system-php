@@ -10,39 +10,23 @@ include('connect.php');
     $array = mysqli_fetch_assoc($result);
     return $array;
 }
-function SelectOne($table, $conditions)
-{
-    global $conn;
-    $stmt = "select * FROM  $table";
-    // for ($conditions as $keys => )
-}
 
-
-function excuteQuery($sql, $data)
-{
-    global $conn;
-    $query = $conn->prepare($sql);
-    $values = array_values($data);
-    $types = str_repeat('s',count($values));
-    $query->bind_param($types, ...$values);
-    $query->execute();
-    return $query;
-
-}
-function getUsernameById($id)
+function getUserById($id)
 	{
 		global $conn;
-		$sql = "SELECT username FROM users WHERE 'id'='$id' LIMIT 1";
-
+		$sql = "SELECT * FROM users WHERE id = $id";
 		$result = mysqli_query($conn, $sql);
-		$user = mysqli_fetch_assoc($result);
-       
 
-		return $user; 
+	
+		$user = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+       
+       
+		return $user[0]['username']; 
 	}
 
 
-  ;
+  
     
      // escape value from form
      function esc(String $value)

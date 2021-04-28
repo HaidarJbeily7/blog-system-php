@@ -65,7 +65,7 @@
 
             <div class="post-info">
               <i class="fa fa-user-o"></i> <?php
-               echo getUsernameById($post['user_id']);
+             echo getUserById($post['user_id']);
 
               ?>
               &nbsp;
