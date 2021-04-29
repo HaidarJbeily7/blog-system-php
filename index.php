@@ -5,19 +5,7 @@
 <?php include("./app/controllers/posts.php"); ?>
 
 <?php  $posts =getPosts(); ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
- <!-- Font Awesome -->
- <link rel="stylesheet" href= "assets/css/font-awesome.min.css"  />
-
-<!-- Custom CSS -->
-<link rel="stylesheet" href=  "assets/css/style.css" />
+<?php include('./app/include/head.php') ?>
 
 
   <title>Haidar Inspires Blog</title>
@@ -57,6 +45,10 @@
         <h1 class="recent-posts-title">Recent Posts</h1>
  
         <?php foreach($posts as $post):?>
+        <form action="single.php" method="post">
+          <?php foreach($post as $key => $value ):?>
+        <input type="hidden" name="post-data[<?php echo $key;?>]" value=" <?php echo $value; ?>">
+        <?php endforeach; ?>
         <div class="post clearfix">
           <img src=' <?php echo "./assets/images/".$post['image']; ?>' class="post-image" alt="">
           <div class="post-content">
@@ -87,9 +79,10 @@
 
             </p>
             
-            <a href="single.php" class="read-more">Read More</a>
+            <button type="submit" class = "read-more" name="single-post">Read More</button>
           </div>
         </div>
+        </form>
         <?php endforeach;?> 
         
         </div>
@@ -111,8 +104,7 @@
   <?php include("./app/include/footer.php"); ?>
 
 
-  <!-- JQuery -->
-  <script src="./assets/js/jquery.min.js"></script>
+ 
   <script src="./assets/js/scripts.js"></script>
 
 </body>

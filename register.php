@@ -3,19 +3,7 @@
 <?php include("./app/controllers/users.php"); ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href= "./assets/css/font-awesome.min.css"  />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href=  "./assets/css/style.css" />
 
   <title>Register</title>
 </head>
@@ -63,7 +51,7 @@
 
 
   <!-- JQuery -->
-  <script src="./assets/js/jquery.min.js"></script>
+ 
 
   <script src="./assets/js/scripts.js"></script>
 

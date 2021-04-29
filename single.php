@@ -1,18 +1,11 @@
+
+
 <?php include('./app/controllers/users.php') ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php include('./app/include/head.php') ?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
- <!-- Font Awesome -->
- <link rel="stylesheet" href= "assets/css/font-awesome.min.css"  />
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href=  "assets/css/style.css" />
 
 
   <title> Blog | Post</title>
@@ -22,43 +15,74 @@
 
 
 
-    <?php include("./app/include/header.php") ?>
+  <?php include("./app/include/header.php") ?>
     
+
+
     <!-- // content -->
-    
-    <div class="content "  style="margin-bottom: 10px; width:80%">
-    <a href="create_post.php">
-    <button class = 'btn' > 
-   Edit Post
-    </button>
-    </a>
-    </div>
+    <?php   if( isset( $_SESSION['id']) ):?>  
+      <?php if($_SESSION['id'] == $_POST['post-data']['user_id']):?>  
+        <form action="edit_post.php" method="post">
+          <div class="content "  style="margin-bottom: 0px; width:60%">
+          <input type="hidden" name="post-id" value='<?php echo  $_POST['post-data']['id']  ;?>'>
+          <input type="hidden" name="title" value='<?php echo  $_POST['post-data']['title']  ;?>'>
+          <input type="hidden" name="body" value='<?php echo  $_POST['post-data']['body']  ;?>'>
+            <button type="submit" class = 'btn' > 
+                Edit Post
+            </button>
+          
+          </div>
+        </form>
+      <?php endif;?>
+    <?php endif;?>
+
+
+    <?php if( isset( $_SESSION['id']) ):?>  
+      <?php if($_SESSION['id'] == $_POST['post-data']['user_id']):?>  
+        <form action="delete_post.php" method="post">
+          <div class="content "  style="margin-bottom: 0px; width:60%">
+          <input type="hidden" name="post-id" value='<?php echo  $_POST['post-data']['id']  ;?>'>
+            <button type="submit" class = 'btn' > 
+                Delete Post
+            </button>
+          
+          </div>
+        </form>
+      <?php endif;?>
+    <?php endif;?>
+
+
   <!-- Page wrapper -->
-  <div class="page-wrapper">
+    <div class="page-wrapper">
 
-<!-- content -->
-<div class="content clearfix">
+    <!-- content -->
+      <div class="content clearfix">
 
-  <div class="page-content single">
-    <h2 style="text-align: center;">A replacement for new year resolutions - A 12 months challenge</h2>
-    <br>
+        <div class="page-content single">
+          <h2 style="text-align: center;"><?php echo $_POST['post-data']['title']; ?></h2>
+          <br>
 
-    <p>Many times I have come across instances where some people scorn the practice of setting New Year Resolutions.
-    </p>
-    <p>Their reason for this goes something like this:</p>
-    <p>The very word resolution is an indication of some form of internal conflict springing from an ineffectual
-      self-governance in a person. It means the individual is waging a fight against something undesirable in their
-      life; or is making a conscious decision to pursue certain ideals that before were absent in their life.</p>
-    <p>Aren’t you supposed to be pursuing these ideals every day of your life? Isn’t it supposed to be the default
-      state of your life? Why would you wait for a new year before you make a resolution to better your life?</p>
-   
+          <p>
+              <?php echo $_POST['post-data']['body']; ?> 
+          </p>
+        </div>
 
-  </div>
-
-</div>
-<button type="submit" class = 'btn-sm'>Like</button>
-            <button type="submit"class = 'btn-sm'>Dislike</button>
-  </div>
+            <?php if(isset($_SESSION['id'])): ?>
+            <form action="single.php" method="post">
+                <div class="lk">
+                  <button type="submit" name="like" class = "btn-sm">Like</button>
+                  <button type="submit" name = "dislike" class = "btn-sm" >Dislike</button>
+                </div>
+                <div>
+                  <textarea name="comment" cols="30" rows="3" class="text-input contact-input" placeholder="Comment..."></textarea>
+                  <button type="submit" name="send-msg-btn" class="send-msg-btn btn-sm">
+                    <i class="fa fa-send"></i> comment
+                  </button>
+                </div>
+              </form>
+            <?php endif; ?> 
+        </div>        
+    </div>
   
   
 
@@ -67,7 +91,7 @@
 
 
   <!-- JQuery -->
-  <script src="./assets/js/jquery.min.js"></script>
+ 
   <script src="./assets/js/scripts.js"></script>
 
 </body>

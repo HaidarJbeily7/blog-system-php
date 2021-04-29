@@ -52,3 +52,17 @@ function getUserById($id)
 		return $posts;
         
     }
+
+    function deletePost($post_id)
+	{
+		global $conn;
+		$sql = "DELETE FROM posts WHERE id=$post_id";
+
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['message'] = "Post successfully deleted";
+            $_SESSION['type'] = "success";
+			header("location: index.php");
+			exit(0);
+		}
+	}
+
