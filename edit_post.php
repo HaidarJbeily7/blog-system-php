@@ -43,7 +43,6 @@
 				<input 
 					type="file"
 					name="featured_image"
-          value = '<?php echo $image; ?>'
 					>
           </div>
          

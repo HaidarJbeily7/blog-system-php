@@ -2,7 +2,7 @@
 
 <?php include("./app/controllers/users.php"); ?>
 
-
+<?php include('./app/include/head.php') ?>
 
 
   <title>Register</title>

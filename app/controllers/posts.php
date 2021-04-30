@@ -88,7 +88,7 @@
         {
          
             $user_id = $_SESSION['id'];
-            $sql =  "UPDATE posts SET title='$title',   image='$featured_image', body='$body' WHERE id=$post_id ";
+            $sql =  "UPDATE posts SET title='$title',   image='$image_name', body='$body' WHERE id=$post_id ";
            
             $result = mysqli_query($conn,$sql);
             if( $result)
